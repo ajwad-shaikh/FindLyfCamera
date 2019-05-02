@@ -1,6 +1,10 @@
-# RPi Camera Viewer
+# FindLyf Camera
 
-This program plays the raw H.264 video from a Raspberry Pi.
+This program plays the raw H.264 video from a Raspberry Pi and sends back controls for a SnakeBot - FindLyf.
+
+Created by [Ajwad Shaikh](http://ajwad-shaikh.github.io) for Robotics Capstone Course Project ES205 at PDPM Indian Institute of Information Technology, Design and Manufacturing, Jabalpur.
+
+Raspberry Pi Stream Code is inspired from RPi Camera Viewer Project by Shawn Baker. Original Licenses Included.
 
 ## Copyright and License
 
