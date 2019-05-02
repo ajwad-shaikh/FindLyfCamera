@@ -1,5 +1,5 @@
 // Copyright © 2016-2018 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.classes;
+package ml.ajwad.findlyfcamera.classes;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,8 +8,7 @@ import android.os.Parcelable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ca.frozen.rpicameraviewer.App;
-import ca.frozen.rpicameraviewer.R;
+import ml.ajwad.findlyfcamera.App;
 
 public class Settings implements Parcelable
 {
@@ -104,7 +103,7 @@ public class Settings implements Parcelable
 	//******************************************************************************
 	private void initialize()
 	{
-		cameraName = App.getStr(R.string.camera);
+		cameraName = App.getStr(ml.ajwad.findlyfcamera.R.string.camera);
 		showAllCameras = false;
 		scanTimeout = DEFAULT_TIMEOUT;
 		port = DEFAULT_PORT;

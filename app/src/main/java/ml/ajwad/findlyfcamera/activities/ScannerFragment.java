@@ -1,5 +1,5 @@
 // Copyright © 2016-2019 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.activities;
+package ml.ajwad.findlyfcamera.activities;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -23,13 +23,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import ml.ajwad.findlyfcamera.App;
 import ca.frozen.library.classes.Log;
-import ca.frozen.rpicameraviewer.App;
-import ca.frozen.rpicameraviewer.classes.Camera;
-import ca.frozen.rpicameraviewer.classes.Settings;
-import ca.frozen.rpicameraviewer.classes.TcpIpReader;
-import ca.frozen.rpicameraviewer.classes.Utils;
-import ca.frozen.rpicameraviewer.R;
+import ml.ajwad.findlyfcamera.classes.Camera;
+import ml.ajwad.findlyfcamera.classes.Settings;
+import ml.ajwad.findlyfcamera.classes.TcpIpReader;
+import ml.ajwad.findlyfcamera.classes.Utils;
+import ml.ajwad.findlyfcamera.R;
 
 public class ScannerFragment extends DialogFragment
 {

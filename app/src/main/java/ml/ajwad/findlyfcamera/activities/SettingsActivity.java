@@ -1,5 +1,5 @@
 // Copyright © 2016-2018 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.activities;
+package ml.ajwad.findlyfcamera.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,11 +8,10 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import ml.ajwad.findlyfcamera.App;
 import ca.frozen.library.classes.Log;
-import ca.frozen.rpicameraviewer.App;
-import ca.frozen.rpicameraviewer.classes.Settings;
-import ca.frozen.rpicameraviewer.classes.Utils;
-import ca.frozen.rpicameraviewer.R;
+import ml.ajwad.findlyfcamera.classes.Settings;
+import ml.ajwad.findlyfcamera.classes.Utils;
 
 public class SettingsActivity extends AppCompatActivity
 {
@@ -31,7 +30,7 @@ public class SettingsActivity extends AppCompatActivity
 	{
 		// configure the activity
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_settings);
+		setContentView(ml.ajwad.findlyfcamera.R.layout.activity_settings);
 
 		// initialize the logger
 		Utils.initLogFile(getClass().getSimpleName());
@@ -42,16 +41,16 @@ public class SettingsActivity extends AppCompatActivity
 						: (Settings) savedInstanceState.getParcelable("settings");
 
 		// set the views
-		cameraName = findViewById(R.id.settings_camera_name);
+		cameraName = findViewById(ml.ajwad.findlyfcamera.R.id.settings_camera_name);
 		cameraName.setText(settings.cameraName);
 
-		scanTimeout = findViewById(R.id.settings_scan_timeout);
+		scanTimeout = findViewById(ml.ajwad.findlyfcamera.R.id.settings_scan_timeout);
 		scanTimeout.setText(Integer.toString(settings.scanTimeout));
 
-		port = findViewById(R.id.settings_port);
+		port = findViewById(ml.ajwad.findlyfcamera.R.id.settings_port);
 		port.setText(Integer.toString(settings.port));
 
-		showAllNetworks = findViewById(R.id.settings_show_all_networks);
+		showAllNetworks = findViewById(ml.ajwad.findlyfcamera.R.id.settings_show_all_networks);
 		showAllNetworks.setChecked(settings.showAllCameras);
 	}
 
@@ -77,7 +76,7 @@ public class SettingsActivity extends AppCompatActivity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		getMenuInflater().inflate(R.menu.menu_save, menu);
+		getMenuInflater().inflate(ml.ajwad.findlyfcamera.R.menu.menu_save, menu);
 		return true;
 	}
 
@@ -90,7 +89,7 @@ public class SettingsActivity extends AppCompatActivity
 		int id = item.getItemId();
 
 		// save the camera
-		if (id == R.id.action_save)
+		if (id == ml.ajwad.findlyfcamera.R.id.action_save)
 		{
 			if (getAndCheckSettings())
 			{
@@ -114,7 +113,7 @@ public class SettingsActivity extends AppCompatActivity
 		settings.cameraName = cameraName.getText().toString().trim();
 		if (settings.cameraName.isEmpty())
 		{
-			App.error(this, R.string.error_no_camera_name);
+			App.error(this, ml.ajwad.findlyfcamera.R.string.error_no_camera_name);
 			return false;
 		}
 
@@ -122,7 +121,7 @@ public class SettingsActivity extends AppCompatActivity
 		settings.scanTimeout = Utils.getNumber(scanTimeout);
 		if (settings.scanTimeout < Settings.MIN_TIMEOUT || settings.scanTimeout > Settings.MAX_TIMEOUT)
 		{
-			App.error(this, String.format(getString(R.string.error_bad_timeout), Settings.MIN_TIMEOUT, Settings.MAX_TIMEOUT));
+			App.error(this, String.format(getString(ml.ajwad.findlyfcamera.R.string.error_bad_timeout), Settings.MIN_TIMEOUT, Settings.MAX_TIMEOUT));
 			return false;
 		}
 
@@ -130,7 +129,7 @@ public class SettingsActivity extends AppCompatActivity
 		settings.port = Utils.getNumber(port);
 		if (settings.port < Settings.MIN_PORT || settings.port > Settings.MAX_PORT)
 		{
-			App.error(this, String.format(getString(R.string.error_bad_port), Settings.MIN_PORT, Settings.MAX_PORT));
+			App.error(this, String.format(getString(ml.ajwad.findlyfcamera.R.string.error_bad_port), Settings.MIN_PORT, Settings.MAX_PORT));
 			return false;
 		}
 

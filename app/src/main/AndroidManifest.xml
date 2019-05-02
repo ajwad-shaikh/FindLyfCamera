@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright © 2016-2017 Shawn Baker using the MIT License. -->
-<manifest package="ca.frozen.rpicameraviewer"
+<manifest package="ml.ajwad.findlyfcamera"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- normal permissions -->
@@ -14,14 +14,14 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".App"
+        android:name="ml.ajwad.findlyfcamera.App"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.MainActivity"
+            android:name="ml.ajwad.findlyfcamera.activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -30,39 +30,39 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.AboutActivity"
+            android:name="ml.ajwad.findlyfcamera.activities.AboutActivity"
             android:label="@string/about"
-            android:parentActivityName=".activities.MainActivity" >
+            android:parentActivityName="ml.ajwad.findlyfcamera.activities.MainActivity" >
         </activity>
         <activity
-            android:name=".activities.CameraActivity"
+            android:name="ml.ajwad.findlyfcamera.activities.CameraActivity"
             android:label="@string/camera"
             android:theme="@style/AppBackAsCancelTheme"
-            android:parentActivityName=".activities.MainActivity" >
+            android:parentActivityName="ml.ajwad.findlyfcamera.activities.MainActivity" >
         </activity>
         <activity
-            android:name=".activities.HelpActivity"
+            android:name="ml.ajwad.findlyfcamera.activities.HelpActivity"
             android:label="@string/help"
-            android:parentActivityName=".activities.MainActivity" >
+            android:parentActivityName="ml.ajwad.findlyfcamera.activities.MainActivity" >
         </activity>
         <activity
-            android:name=".activities.LogFilesActivity"
+            android:name="ml.ajwad.findlyfcamera.activities.LogFilesActivity"
             android:label="@string/log_files"
-            android:parentActivityName=".activities.MainActivity" >
+            android:parentActivityName="ml.ajwad.findlyfcamera.activities.MainActivity" >
         </activity>
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name="ml.ajwad.findlyfcamera.activities.SettingsActivity"
             android:label="@string/settings"
             android:launchMode="singleTop"
             android:theme="@style/AppBackAsCancelTheme"
-            android:parentActivityName=".activities.MainActivity" >
+            android:parentActivityName="ml.ajwad.findlyfcamera.activities.MainActivity" >
         </activity>
         <activity
-            android:name=".activities.VideoActivity"
+            android:name="ml.ajwad.findlyfcamera.activities.VideoActivity"
             android:label="@string/video"
             android:theme="@style/AppFullScreenTheme"
             android:screenOrientation="sensorLandscape"
-            android:parentActivityName=".activities.MainActivity" >
+            android:parentActivityName="ml.ajwad.findlyfcamera.activities.MainActivity" >
         </activity>
         <provider
             android:name="android.support.v4.content.FileProvider"

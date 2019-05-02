@@ -1,5 +1,5 @@
 // Copyright © 2016-2018 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.classes;
+package ml.ajwad.findlyfcamera.classes;
 
 import android.os.Parcel;
 import android.os.Parcelable;

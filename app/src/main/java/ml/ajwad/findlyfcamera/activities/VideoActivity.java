@@ -1,5 +1,5 @@
 // Copyright © 2016-2018 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.activities;
+package ml.ajwad.findlyfcamera.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import ca.frozen.library.classes.Log;
-import ca.frozen.rpicameraviewer.classes.Camera;
-import ca.frozen.rpicameraviewer.classes.Utils;
-import ca.frozen.rpicameraviewer.R;
+import ml.ajwad.findlyfcamera.classes.Camera;
+import ml.ajwad.findlyfcamera.classes.Utils;
+import ml.ajwad.findlyfcamera.R;
 
 public class VideoActivity extends AppCompatActivity implements VideoFragment.OnFadeListener
 {

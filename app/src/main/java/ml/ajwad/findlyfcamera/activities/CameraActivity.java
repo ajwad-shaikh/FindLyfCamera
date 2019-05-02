@@ -1,7 +1,6 @@
 // Copyright © 2016-2019 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.activities;
+package ml.ajwad.findlyfcamera.activities;
 
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,12 +10,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ml.ajwad.findlyfcamera.App;
 import ca.frozen.library.classes.Log;
-import ca.frozen.rpicameraviewer.App;
-import ca.frozen.rpicameraviewer.classes.Camera;
-import ca.frozen.rpicameraviewer.classes.Settings;
-import ca.frozen.rpicameraviewer.classes.Utils;
-import ca.frozen.rpicameraviewer.R;
+import ml.ajwad.findlyfcamera.classes.Camera;
+import ml.ajwad.findlyfcamera.classes.Settings;
+import ml.ajwad.findlyfcamera.classes.Utils;
+import ml.ajwad.findlyfcamera.R;
 
 public class CameraActivity extends AppCompatActivity
 {

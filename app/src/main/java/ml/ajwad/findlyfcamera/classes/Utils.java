@@ -1,5 +1,5 @@
 // Copyright © 2016-2019 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.classes;
+package ml.ajwad.findlyfcamera.classes;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -29,9 +29,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import ml.ajwad.findlyfcamera.App;
 import ca.frozen.library.classes.Log;
-import ca.frozen.rpicameraviewer.App;
-import ca.frozen.rpicameraviewer.R;
 
 public class Utils
 {
@@ -59,7 +58,7 @@ public class Utils
 			settings = null;
 			try
 			{
-				String settingsString = preferences.getString(App.getStr(R.string.settings_settings), "");
+				String settingsString = preferences.getString(App.getStr(ml.ajwad.findlyfcamera.R.string.settings_settings), "");
 				if (!settingsString.isEmpty())
 				{
 					settings = new Settings(new JSONObject(settingsString));
@@ -86,7 +85,7 @@ public class Utils
 			cameras = new ArrayList<>();
 			try
 			{
-				String camerasString = preferences.getString(App.getStr(R.string.settings_cameras), "");
+				String camerasString = preferences.getString(App.getStr(ml.ajwad.findlyfcamera.R.string.settings_cameras), "");
 				if (!camerasString.isEmpty())
 				{
 					JSONArray arr = new JSONArray(camerasString);
@@ -138,7 +137,7 @@ public class Utils
 			preferences = PreferenceManager.getDefaultSharedPreferences(App.getContext());
 			editor = preferences.edit();
 			JSONObject obj = settings.toJson();
-			editor.putString(App.getStr(R.string.settings_settings), obj.toString());
+			editor.putString(App.getStr(ml.ajwad.findlyfcamera.R.string.settings_settings), obj.toString());
 		}
 
 		// save the cameras
@@ -154,7 +153,7 @@ public class Utils
 			{
 				arr.put(camera.toJson());
 			}
-			editor.putString(App.getStr(R.string.settings_cameras), arr.toString());
+			editor.putString(App.getStr(ml.ajwad.findlyfcamera.R.string.settings_cameras), arr.toString());
 		}
 
 		// commit the data
@@ -337,7 +336,7 @@ public class Utils
 					ssid = ssid.replaceAll("^\"|\"$", "");
 					if (ssid.equals("<unknown ssid>"))
 					{
-						ssid = App.getStr(R.string.unknown_network);
+						ssid = App.getStr(ml.ajwad.findlyfcamera.R.string.unknown_network);
 					}
 				}
 			}
@@ -402,7 +401,7 @@ public class Utils
 		{
 			// get/create the snapshots folder
 			File pictures = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-			File rpi = new File(pictures, App.getStr(R.string.app_name));
+			File rpi = new File(pictures, App.getStr(ml.ajwad.findlyfcamera.R.string.app_name));
 			if (!rpi.exists())
 			{
 				rpi.mkdirs();
@@ -467,7 +466,7 @@ public class Utils
 	//******************************************************************************
 	public static void initLogFile(String tag)
 	{
-		String baseFileName = App.getStr(R.string.app_name).replaceAll("\\s+", "");
+		String baseFileName = App.getStr(ml.ajwad.findlyfcamera.R.string.app_name).replaceAll("\\s+", "");
 		Log.init(App.getContext(), tag, baseFileName);
 		Log.info("onCreate");
 	}

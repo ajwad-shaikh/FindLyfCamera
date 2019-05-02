@@ -1,5 +1,5 @@
 // Copyright © 2017-2018 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.activities;
+package ml.ajwad.findlyfcamera.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -25,8 +25,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import ca.frozen.library.classes.Log;
-import ca.frozen.rpicameraviewer.R;
-import ca.frozen.rpicameraviewer.classes.Utils;
+import ml.ajwad.findlyfcamera.R;
+import ml.ajwad.findlyfcamera.classes.Utils;
 
 public class LogFilesActivity extends AppCompatActivity
 {

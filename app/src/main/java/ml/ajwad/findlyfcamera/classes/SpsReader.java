@@ -1,5 +1,5 @@
 // Copyright © 2016 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.classes;
+package ml.ajwad.findlyfcamera.classes;
 
 public class SpsReader
 {

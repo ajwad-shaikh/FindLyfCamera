@@ -1,5 +1,5 @@
 // Copyright © 2016-2019 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.classes;
+package ml.ajwad.findlyfcamera.classes;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import ca.frozen.rpicameraviewer.R;
+import ml.ajwad.findlyfcamera.R;
 
 public class CameraAdapter extends BaseAdapter
 {

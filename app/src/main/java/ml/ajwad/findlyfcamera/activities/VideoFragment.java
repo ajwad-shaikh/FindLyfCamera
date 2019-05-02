@@ -1,5 +1,5 @@
 // Copyright © 2016-2018 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.activities;
+package ml.ajwad.findlyfcamera.activities;
 
 import android.Manifest;
 import android.app.Activity;
@@ -33,14 +33,14 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
+import ml.ajwad.findlyfcamera.App;
 import ca.frozen.library.classes.Log;
 import ca.frozen.library.views.ZoomPanTextureView;
-import ca.frozen.rpicameraviewer.App;
-import ca.frozen.rpicameraviewer.R;
-import ca.frozen.rpicameraviewer.classes.Camera;
-import ca.frozen.rpicameraviewer.classes.SpsParser;
-import ca.frozen.rpicameraviewer.classes.TcpIpReader;
-import ca.frozen.rpicameraviewer.classes.Utils;
+import ml.ajwad.findlyfcamera.R;
+import ml.ajwad.findlyfcamera.classes.Camera;
+import ml.ajwad.findlyfcamera.classes.SpsParser;
+import ml.ajwad.findlyfcamera.classes.TcpIpReader;
+import ml.ajwad.findlyfcamera.classes.Utils;
 
 public class VideoFragment extends Fragment implements TextureView.SurfaceTextureListener
 {

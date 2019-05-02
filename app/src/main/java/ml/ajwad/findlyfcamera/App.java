@@ -1,5 +1,5 @@
 // Copyright © 2016 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer;
+package ml.ajwad.findlyfcamera;
 
 import android.app.AlertDialog;
 import android.app.Application;

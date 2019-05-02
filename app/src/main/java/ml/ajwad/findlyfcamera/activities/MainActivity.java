@@ -1,5 +1,5 @@
 // Copyright © 2016-2018 Shawn Baker using the MIT License.
-package ca.frozen.rpicameraviewer.activities;
+package ml.ajwad.findlyfcamera.activities;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -27,12 +27,11 @@ import android.widget.ListView;
 import java.util.Collections;
 import java.util.List;
 
+import ml.ajwad.findlyfcamera.BuildConfig;
+import ml.ajwad.findlyfcamera.classes.CameraAdapter;
 import ca.frozen.library.classes.Log;
-import ca.frozen.rpicameraviewer.BuildConfig;
-import ca.frozen.rpicameraviewer.classes.Camera;
-import ca.frozen.rpicameraviewer.classes.CameraAdapter;
-import ca.frozen.rpicameraviewer.classes.Utils;
-import ca.frozen.rpicameraviewer.R;
+import ml.ajwad.findlyfcamera.classes.Camera;
+import ml.ajwad.findlyfcamera.classes.Utils;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -54,17 +53,17 @@ public class MainActivity extends AppCompatActivity
 	{
 		// set the view
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(ml.ajwad.findlyfcamera.R.layout.activity_main);
 
 		// initialize the logger
 		Utils.initLogFile(getClass().getSimpleName());
-		Log.info(getString(R.string.app_name) + " " + BuildConfig.VERSION_NAME);
+		Log.info(getString(ml.ajwad.findlyfcamera.R.string.app_name) + " " + BuildConfig.VERSION_NAME);
 
 		// load the settings and cameras
 		Utils.loadData();
 
 		// create the toolbar
-		Toolbar toolbar = findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(ml.ajwad.findlyfcamera.R.id.toolbar);
 		setSupportActionBar(toolbar);
 
 		// set the list adapter
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity
 			}
 		});
 		adapter.refresh();
-		ListView listView = findViewById(R.id.cameras);
+		ListView listView = findViewById(ml.ajwad.findlyfcamera.R.id.cameras);
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
 		{
@@ -106,8 +105,8 @@ public class MainActivity extends AppCompatActivity
 				Log.info("long press: delete");
 				final Camera camera = (Camera)view.getTag();
 				AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-				alert.setMessage(R.string.ok_to_delete_camera);
-				alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
+				alert.setMessage(ml.ajwad.findlyfcamera.R.string.ok_to_delete_camera);
+				alert.setPositiveButton(ml.ajwad.findlyfcamera.R.string.yes, new DialogInterface.OnClickListener()
 				{
 					@Override
 					public void onClick(DialogInterface dialog, int which)
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity
 						dialog.dismiss();
 					}
 				});
-				alert.setNegativeButton(R.string.no, new DialogInterface.OnClickListener()
+				alert.setNegativeButton(ml.ajwad.findlyfcamera.R.string.no, new DialogInterface.OnClickListener()
 				{
 					@Override
 					public void onClick(DialogInterface dialog, int which)
@@ -133,7 +132,7 @@ public class MainActivity extends AppCompatActivity
 		});
 
 		// create the add button
-		FloatingActionButton addCameraButton = findViewById(R.id.add_camera);
+		FloatingActionButton addCameraButton = findViewById(ml.ajwad.findlyfcamera.R.id.add_camera);
 		addCameraButton.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
@@ -216,7 +215,7 @@ public class MainActivity extends AppCompatActivity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		getMenuInflater().inflate(R.menu.menu_main, menu);
+		getMenuInflater().inflate(ml.ajwad.findlyfcamera.R.menu.menu_main, menu);
 		mainMenu = menu;
 		return true;
 	}
@@ -228,7 +227,7 @@ public class MainActivity extends AppCompatActivity
 	public boolean onPrepareOptionsMenu(Menu menu)
 	{
 		// disable Delete All if there are no cameras
-		MenuItem item = menu.findItem(R.id.action_delete_all);
+		MenuItem item = menu.findItem(ml.ajwad.findlyfcamera.R.id.action_delete_all);
 		item.setEnabled(adapter.getCameras().size() != 0);
 
 		// set the network name
@@ -247,17 +246,17 @@ public class MainActivity extends AppCompatActivity
 	{
 		if (mainMenu != null)
 		{
-			MenuItem item = mainMenu.findItem(R.id.action_network);
+			MenuItem item = mainMenu.findItem(ml.ajwad.findlyfcamera.R.id.action_network);
 			if (Utils.getSettings().showAllCameras)
 			{
-				item.setTitle(R.string.all_networks);
+				item.setTitle(ml.ajwad.findlyfcamera.R.string.all_networks);
 			}
 			else
 			{
 				String name = Utils.getNetworkName();
 				if (name == null || name.isEmpty())
 				{
-					item.setTitle(R.string.no_network);
+					item.setTitle(ml.ajwad.findlyfcamera.R.string.no_network);
 				}
 				else
 				{
@@ -278,7 +277,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
 		// network name
-        if (id == R.id.action_network)
+        if (id == ml.ajwad.findlyfcamera.R.id.action_network)
         {
 			// nothing to do right now
 			Log.info("menu: network");
@@ -286,7 +285,7 @@ public class MainActivity extends AppCompatActivity
         }
 
 		// scan for cameras
-		else if (id == R.id.action_scan)
+		else if (id == ml.ajwad.findlyfcamera.R.id.action_scan)
 		{
 			Log.info("menu: scan");
 			startScannerWithPermission();
@@ -294,12 +293,12 @@ public class MainActivity extends AppCompatActivity
 		}
 
 		// delete all the cameras
-		else if (id == R.id.action_delete_all)
+		else if (id == ml.ajwad.findlyfcamera.R.id.action_delete_all)
 		{
 			Log.info("menu: delete all");
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
-			alert.setMessage(R.string.ok_to_delete_all_cameras);
-			alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
+			alert.setMessage(ml.ajwad.findlyfcamera.R.string.ok_to_delete_all_cameras);
+			alert.setPositiveButton(ml.ajwad.findlyfcamera.R.string.yes, new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface dialog, int which)
@@ -322,7 +321,7 @@ public class MainActivity extends AppCompatActivity
 					dialog.dismiss();
 				}
 			});
-			alert.setNegativeButton(R.string.no, new DialogInterface.OnClickListener()
+			alert.setNegativeButton(ml.ajwad.findlyfcamera.R.string.no, new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface dialog, int which)
@@ -335,7 +334,7 @@ public class MainActivity extends AppCompatActivity
 		}
 
 		// edit the settings
-		else if (id == R.id.action_settings)
+		else if (id == ml.ajwad.findlyfcamera.R.id.action_settings)
 		{
 			Log.info("menu: settings");
 			Intent intent = new Intent(this, SettingsActivity.class);
@@ -344,7 +343,7 @@ public class MainActivity extends AppCompatActivity
 		}
 
 		// display the help information
-		else if (id == R.id.action_help)
+		else if (id == ml.ajwad.findlyfcamera.R.id.action_help)
 		{
 			Log.info("menu: help");
 			Intent intent = new Intent(this, HelpActivity.class);
@@ -353,7 +352,7 @@ public class MainActivity extends AppCompatActivity
 		}
 
 		// display the log files
-		else if (id == R.id.action_log_files)
+		else if (id == ml.ajwad.findlyfcamera.R.id.action_log_files)
 		{
 			Log.info("menu: log files");
 			Intent intent = new Intent(this, LogFilesActivity.class);
@@ -362,7 +361,7 @@ public class MainActivity extends AppCompatActivity
 		}
 
 		// display the about information
-        else if (id == R.id.action_about)
+        else if (id == ml.ajwad.findlyfcamera.R.id.action_about)
         {
 			Log.info("menu: about");
             Intent intent = new Intent(this, AboutActivity.class);
