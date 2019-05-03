@@ -49,7 +49,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_margin="5dp"
-            android:background="@drawable/close_button" />
+            android:background="@drawable/close" />
 
         <Button
             android:id="@+id/video_snapshot"
@@ -58,7 +58,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_margin="5dp"
-            android:background="@drawable/snapshot_button" />
+            android:background="@drawable/camera_snap" />
 
         <Button
             android:id="@+id/control_straight"
@@ -67,7 +67,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
-            android:background="@drawable/snapshot_button" />
+            android:background="@drawable/straight" />
 
         <Button
             android:id="@+id/control_sine"
@@ -76,7 +76,7 @@
             android:layout_below="@id/control_straight"
             android:layout_alignParentEnd="true"
             android:layout_margin="5dp"
-            android:background="@drawable/snapshot_button" />
+            android:background="@drawable/sine" />
 
         <Button
             android:id="@+id/control_bend"
@@ -85,7 +85,7 @@
             android:layout_above="@id/control_straight"
             android:layout_alignParentEnd="true"
             android:layout_margin="5dp"
-            android:background="@drawable/snapshot_button" />
+            android:background="@drawable/bend" />
 
         <Button
             android:id="@+id/control_left"
@@ -94,7 +94,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@id/control_sine"
             android:layout_margin="5dp"
-            android:background="@drawable/snapshot_button" />
+            android:background="@drawable/left" />
 
         <Button
             android:id="@+id/control_right"
@@ -103,7 +103,7 @@
             android:layout_alignBottom="@id/control_left"
             android:layout_toEndOf="@id/control_forward"
             android:layout_margin="5dp"
-            android:background="@drawable/snapshot_button" />
+            android:background="@drawable/right" />
 
         <Button
             android:id="@+id/control_forward"
@@ -112,7 +112,7 @@
             android:layout_above="@id/control_left"
             android:layout_toEndOf="@id/control_left"
             android:layout_margin="5dp"
-            android:background="@drawable/snapshot_button" />
+            android:background="@drawable/forward" />
 
         <Button
             android:id="@+id/control_reverse"
@@ -121,7 +121,16 @@
             android:layout_below="@id/control_left"
             android:layout_toEndOf="@id/control_left"
             android:layout_margin="5dp"
-            android:background="@drawable/snapshot_button" />
+            android:background="@drawable/reverse" />
+
+        <Button
+            android:id="@+id/control_pause"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/control_forward"
+            android:layout_toEndOf="@id/control_left"
+            android:layout_margin="5dp"
+            android:background="@drawable/pause" />
 
     </RelativeLayout>
 

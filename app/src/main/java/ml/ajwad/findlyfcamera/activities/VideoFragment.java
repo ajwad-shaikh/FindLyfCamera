@@ -77,7 +77,7 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 	private ZoomPanTextureView textureView;
 	private TextView nameView, messageView, sensorStatView;
 	private Button closeButton, snapshotButton, leftButton, rightButton, fwdButton, revButton,
-			strButton, sineButton, bendButton;
+			strButton, sineButton, bendButton, pauseButton;
 	private Runnable fadeInRunner, fadeOutRunner, finishRunner, startVideoRunner;
 	private Handler fadeInHandler, fadeOutHandler, finishHandler, startVideoHandler;
 	private OnFadeListener fadeListener;
@@ -145,6 +145,7 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 				strButton.startAnimation(fadeInSnapshot);
 				sineButton.startAnimation(fadeInSnapshot);
 				bendButton.startAnimation(fadeInSnapshot);
+				pauseButton.startAnimation(fadeInSnapshot);
 				fadeListener.onStartFadeIn();
 			}
 		};
@@ -172,6 +173,7 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 				strButton.startAnimation(fadeOutSnapshot);
 				sineButton.startAnimation(fadeOutSnapshot);
 				bendButton.startAnimation(fadeOutSnapshot);
+				pauseButton.startAnimation(fadeOutSnapshot);
 				fadeListener.onStartFadeOut();
 			}
 		};
@@ -317,6 +319,7 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 		rightButton = view.findViewById(R.id.control_right);
 		fwdButton = view.findViewById(R.id.control_forward);
 		revButton = view.findViewById(R.id.control_reverse);
+		pauseButton = view.findViewById(R.id.control_pause);
 
 		strButton = view.findViewById(R.id.control_straight);
 		sineButton = view.findViewById(R.id.control_sine);
@@ -452,6 +455,26 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 					public void run() {
 						try {
 							out.writeInt(7);
+							out.flush();
+						}
+						catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}).start();
+			}
+		});
+
+		pauseButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						try {
+							out.writeInt(9);
 							out.flush();
 						}
 						catch (Exception ex) {
