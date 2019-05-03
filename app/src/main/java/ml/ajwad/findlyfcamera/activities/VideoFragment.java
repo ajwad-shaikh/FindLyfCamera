@@ -69,7 +69,8 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 	private DecoderThread decoder;
 	private ZoomPanTextureView textureView;
 	private TextView nameView, messageView;
-	private Button closeButton, snapshotButton;
+	private Button closeButton, snapshotButton, leftButton, rightButton, fwdButton, revButton,
+			strButton, sineButton, bendButton;
 	private Runnable fadeInRunner, fadeOutRunner, finishRunner, startVideoRunner;
 	private Handler fadeInHandler, fadeOutHandler, finishHandler, startVideoHandler;
 	private OnFadeListener fadeListener;
@@ -125,6 +126,13 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 				nameView.startAnimation(fadeInName);
 				closeButton.startAnimation(fadeInSnapshot);
 				snapshotButton.startAnimation(fadeInSnapshot);
+				leftButton.startAnimation(fadeInSnapshot);
+				rightButton.startAnimation(fadeInSnapshot);
+				fwdButton.startAnimation(fadeInSnapshot);
+				revButton.startAnimation(fadeInSnapshot);
+				strButton.startAnimation(fadeInSnapshot);
+				sineButton.startAnimation(fadeInSnapshot);
+				bendButton.startAnimation(fadeInSnapshot);
 				fadeListener.onStartFadeIn();
 			}
 		};
@@ -145,6 +153,13 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 				nameView.startAnimation(fadeOutName);
 				closeButton.startAnimation(fadeOutSnapshot);
 				snapshotButton.startAnimation(fadeOutSnapshot);
+				leftButton.startAnimation(fadeOutSnapshot);
+				rightButton.startAnimation(fadeOutSnapshot);
+				fwdButton.startAnimation(fadeOutSnapshot);
+				revButton.startAnimation(fadeOutSnapshot);
+				strButton.startAnimation(fadeOutSnapshot);
+				sineButton.startAnimation(fadeOutSnapshot);
+				bendButton.startAnimation(fadeOutSnapshot);
 				fadeListener.onStartFadeOut();
 			}
 		};
@@ -274,6 +289,78 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 				{
 					takeSnapshot();
 				}
+			}
+		});
+
+		leftButton = view.findViewById(R.id.control_left);
+		rightButton = view.findViewById(R.id.control_right);
+		fwdButton = view.findViewById(R.id.control_forward);
+		revButton = view.findViewById(R.id.control_reverse);
+
+		strButton = view.findViewById(R.id.control_straight);
+		sineButton = view.findViewById(R.id.control_sine);
+		bendButton = view.findViewById(R.id.control_bend);
+
+		leftButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				//TODO: Define Action
+			}
+		});
+
+		rightButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				//TODO: Define Action
+			}
+		});
+
+		fwdButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				//TODO: Define Action
+			}
+		});
+
+		revButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				//TODO: Define Action
+			}
+		});
+
+		strButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				//TODO: Define Action
+			}
+		});
+
+		sineButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				//TODO: Define Action
+			}
+		});
+
+		bendButton.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				//TODO: Define Action
 			}
 		});
 
@@ -453,6 +540,12 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			lp = (ViewGroup.MarginLayoutParams)snapshotButton.getLayoutParams();
 			lp.setMargins(leftMargin, margin, rightMargin, margin);
 			lp = (ViewGroup.MarginLayoutParams)nameView.getLayoutParams();
+			lp.setMargins(leftMargin, margin, rightMargin, margin);
+			lp = (ViewGroup.MarginLayoutParams)strButton.getLayoutParams();
+			lp.setMargins(leftMargin, margin, rightMargin, margin);
+			lp = (ViewGroup.MarginLayoutParams)sineButton.getLayoutParams();
+			lp.setMargins(leftMargin, margin, rightMargin, margin);
+			lp = (ViewGroup.MarginLayoutParams)bendButton.getLayoutParams();
 			lp.setMargins(leftMargin, margin, rightMargin, margin);
 		}
 	}
