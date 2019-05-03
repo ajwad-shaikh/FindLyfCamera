@@ -2,6 +2,7 @@
 package ml.ajwad.findlyfcamera.activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -231,6 +232,7 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 	//******************************************************************************
 	// onCreateView
 	//******************************************************************************
+	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
@@ -331,7 +333,6 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 						try {
 							out.writeInt(1);
 							out.flush();
-							out.writeInt(0);
 						}
 						catch (Exception ex) {
 							ex.printStackTrace();
@@ -352,7 +353,6 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 						try {
 							out.writeInt(2);
 							out.flush();
-							out.writeInt(0);
 						}
 						catch (Exception ex) {
 							ex.printStackTrace();
@@ -373,7 +373,6 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 						try {
 							out.writeInt(3);
 							out.flush();
-							out.writeInt(0);
 						}
 						catch (Exception ex) {
 							ex.printStackTrace();
@@ -392,9 +391,8 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 					@Override
 					public void run() {
 						try {
-							out.writeInt(4);
-							out.flush();
 							out.writeInt(0);
+							out.flush();
 						}
 						catch (Exception ex) {
 							ex.printStackTrace();
@@ -413,9 +411,8 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 					@Override
 					public void run() {
 						try {
-							out.writeInt(8);
+							out.writeInt(5);
 							out.flush();
-							out.writeInt(0);
 						}
 						catch (Exception ex) {
 							ex.printStackTrace();
@@ -434,9 +431,8 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 					@Override
 					public void run() {
 						try {
-							out.writeInt(9);
+							out.writeInt(6);
 							out.flush();
-							out.writeInt(0);
 						}
 						catch (Exception ex) {
 							ex.printStackTrace();
@@ -455,9 +451,8 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 					@Override
 					public void run() {
 						try {
-							out.writeInt(10);
+							out.writeInt(7);
 							out.flush();
-							out.writeInt(0);
 						}
 						catch (Exception ex) {
 							ex.printStackTrace();
@@ -537,7 +532,7 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			@Override
 			public void run() {
 				try {
-					out.writeInt(-1);
+					out.writeInt(15);
 					out.close();
 					in.close();
 					socket.close();

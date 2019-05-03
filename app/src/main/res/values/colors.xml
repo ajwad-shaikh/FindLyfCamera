@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright © 2016 Shawn Baker using the MIT License. -->
 <resources>
-    <color name="accent">#E00000</color>
-    <color name="activity_background">#FFF5EE</color>
+    <color name="accent">#0000E0</color>
+    <color name="activity_background">#F5EEFF</color>
     <color name="bad_text">#FF0000</color>
     <color name="button_text">#FFFFFF</color>
     <color name="good_text">#00C000</color>
-    <color name="primary">#C31E1E</color>
-    <color name="primary_dark">#671818</color>
+    <color name="primary">#1E1EC3</color>
+    <color name="primary_dark">#181867</color>
     <color name="progress_background">#BBBBBB</color>
     <color name="transparent_bar">#80000000</color>
 </resources>
