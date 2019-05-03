@@ -28,6 +28,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -75,6 +81,10 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 	private Handler fadeInHandler, fadeOutHandler, finishHandler, startVideoHandler;
 	private OnFadeListener fadeListener;
 
+	private ObjectInputStream in;
+	private ObjectOutputStream out;
+	private Socket socket;
+
 	//******************************************************************************
 	// newInstance
 	//******************************************************************************
@@ -109,6 +119,7 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 		camera = getArguments().getParcelable(CAMERA);
 		fullScreen = getArguments().getBoolean(FULL_SCREEN);
 		Log.info("camera: " + camera.toString());
+
 
 		// create the fade in handler and runnable
 		fadeInHandler = new Handler();
@@ -223,6 +234,10 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
+
+		Client client = new Client(camera.address, camera.port + 1);
+		client.start();
+
 		View view = inflater.inflate(R.layout.fragment_video, container, false);
 
 		// configure the name
@@ -310,7 +325,19 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			@Override
 			public void onClick(View view)
 			{
-				//TODO: Define Action
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						try {
+							out.writeInt(1);
+							out.flush();
+							out.writeInt(0);
+						}
+						catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}).start();
 			}
 		});
 
@@ -319,7 +346,19 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			@Override
 			public void onClick(View view)
 			{
-				//TODO: Define Action
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						try {
+							out.writeInt(2);
+							out.flush();
+							out.writeInt(0);
+						}
+						catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}).start();
 			}
 		});
 
@@ -328,7 +367,19 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			@Override
 			public void onClick(View view)
 			{
-				//TODO: Define Action
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						try {
+							out.writeInt(3);
+							out.flush();
+							out.writeInt(0);
+						}
+						catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}).start();
 			}
 		});
 
@@ -337,7 +388,19 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			@Override
 			public void onClick(View view)
 			{
-				//TODO: Define Action
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						try {
+							out.writeInt(4);
+							out.flush();
+							out.writeInt(0);
+						}
+						catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}).start();
 			}
 		});
 
@@ -346,7 +409,19 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			@Override
 			public void onClick(View view)
 			{
-				//TODO: Define Action
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						try {
+							out.writeInt(8);
+							out.flush();
+							out.writeInt(0);
+						}
+						catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}).start();
 			}
 		});
 
@@ -355,7 +430,19 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			@Override
 			public void onClick(View view)
 			{
-				//TODO: Define Action
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						try {
+							out.writeInt(9);
+							out.flush();
+							out.writeInt(0);
+						}
+						catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}).start();
 			}
 		});
 
@@ -364,7 +451,19 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			@Override
 			public void onClick(View view)
 			{
-				//TODO: Define Action
+				new Thread(new Runnable(){
+					@Override
+					public void run() {
+						try {
+							out.writeInt(10);
+							out.flush();
+							out.writeInt(0);
+						}
+						catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					}
+				}).start();
 			}
 		});
 
@@ -433,6 +532,24 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 		decoder.start();
 	}
 
+	private void closeConnection() {
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				try {
+					out.writeInt(-1);
+					out.close();
+					in.close();
+					socket.close();
+				}
+				catch (Exception ex) {
+					ex.printStackTrace();
+					Log.info(ex.getMessage());
+				}
+			}
+		}).start();
+	}//end of closeConnection
+
 	//******************************************************************************
 	// onStop
 	//******************************************************************************
@@ -440,7 +557,7 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 	public void onStop()
 	{
 		super.onStop();
-
+		closeConnection();
 		if (decoder != null)
 		{
 			decoder.interrupt();
@@ -931,4 +1048,44 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			});
 		}
 	}
+
+	/////////////// client thread ////////////////////////////
+	private class Client extends Thread
+	{
+		private String ipaddress;
+		private int portnum;
+
+		public Client(String ipaddress, int portnum) {
+			this.ipaddress = ipaddress;
+			this.portnum = portnum;
+		}
+
+		@Override
+		public void run() {
+			super.run();
+			connectToServer(ipaddress, portnum);
+
+		}
+
+		public void connectToServer(String ip, int port) {
+
+			try {
+			    android.util.Log.d("Socket", ip + " " + port);
+				socket = new Socket(InetAddress.getByName(ip), port);
+				out = new ObjectOutputStream(socket.getOutputStream());
+				out.flush();
+				in = new ObjectInputStream(socket.getInputStream());
+				for (int i = 0; i < 1; i++) {
+					System.out.println(in.readObject() + "\n");
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}//end of client class
+
 }
