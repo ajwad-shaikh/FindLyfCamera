@@ -22,6 +22,15 @@
         android:textSize="32sp" />
 
     <TextView
+        android:id="@+id/sensor_stat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|left"
+        android:padding="5dp"
+        android:textColor="@color/accent"
+        android:textSize="20sp" />
+
+    <TextView
         android:id="@+id/video_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

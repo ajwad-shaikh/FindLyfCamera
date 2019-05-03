@@ -68,7 +68,7 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 	private boolean fullScreen;
 	private DecoderThread decoder;
 	private ZoomPanTextureView textureView;
-	private TextView nameView, messageView;
+	private TextView nameView, messageView, sensorStatView;
 	private Button closeButton, snapshotButton, leftButton, rightButton, fwdButton, revButton,
 			strButton, sineButton, bendButton;
 	private Runnable fadeInRunner, fadeOutRunner, finishRunner, startVideoRunner;
@@ -233,6 +233,10 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 		messageView = view.findViewById(R.id.video_message);
 		messageView.setTextColor(App.getClr(R.color.good_text));
 		messageView.setText(R.string.initializing_video);
+
+		// initialize sensor stat message
+		sensorStatView = view.findViewById(R.id.sensor_stat);
+		sensorStatView.setText(String.format(getString(R.string.sensor_message), 50));
 
 		// set the texture listener
 		textureView = view.findViewById(R.id.video_surface);
@@ -541,6 +545,8 @@ public class VideoFragment extends Fragment implements TextureView.SurfaceTextur
 			lp.setMargins(leftMargin, margin, rightMargin, margin);
 			lp = (ViewGroup.MarginLayoutParams)nameView.getLayoutParams();
 			lp.setMargins(leftMargin, margin, rightMargin, margin);
+			lp = (ViewGroup.MarginLayoutParams)sensorStatView.getLayoutParams();
+			lp.setMargins(leftMargin, topMargin, rightMargin, margin);
 			lp = (ViewGroup.MarginLayoutParams)strButton.getLayoutParams();
 			lp.setMargins(leftMargin, margin, rightMargin, margin);
 			lp = (ViewGroup.MarginLayoutParams)sineButton.getLayoutParams();
